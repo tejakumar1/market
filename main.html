@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Fruits and Vegetables</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #2ef127;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+        nav a {
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        nav a:hover {
+            background-color: #ff6347;
+        }
+        .hero {
+            background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        .h1 {
+            font-size: 10em;
+            text-shadow: #333;
+            text-decoration: solid;
+            text-decoration-style: dashed;
+            color: #333;
+        }
+        .hero h2 {
+            font-size: 4em;
+        }
+        .about, .menu, .contact {
+            padding: 50px;
+            text-align: center;
+            background-color: #f0f5f6;
+        }
+        .menu-items {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 30px;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 10px;
+            height: auto;
+        }
+        .menu-item {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            height: 400px;
+            flex: 0 0 auto;
+            text-align: center;
+        }
+        .menu-item img {
+            max-width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .order {
+            display: flex;
+            justify-content: space-between;
+            padding: 50px;
+            background-color: #fafafa;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select, input[type="number"] {
+            width: 300px;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #ff6347;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ff7f50;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 50px;
+        }
+
+        .order-left, .order-right {
+            width: 48%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .order-left {
+            background-color: #f9f9f9;
+        }
+
+        .order-right {
+            background-color: #f1f1f1;
+        }
+        /* Slider Container */
+        #image-slider {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            overflow: hidden;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin: 20px auto;
+        }
+    
+        /* Images inside the slider */
+        .slider {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+    
+        .slider img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .form-group { 
+            text-align: center; 
+        } 
+        .form-group label, .form-group textarea {
+             display: block; 
+             margin: 0 auto; 
+             text-align: center; 
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <h1>OUR MARKET....</h1>
+    <p>Your home for fresh produce</p>
+</header>
+
+<!-- Navigation Bar -->
+<nav>
+    <a href="#about">About</a>
+    <a href="#menu">Menu</a>
+    <a href="#order">Order</a>
+    <a href="">Contact us</a>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <h2>Welcome to Tej Fresh Fruits and Vegetables</h2>
+</section>
+
+<!-- About Section -->
+<section id="about" class="about">
+    <h2>About our Site</h2>
+    <p>Fruits and vegetables are packed with essential nutrients, vitamins, and fiber, promoting overall well-being. They support digestion, boost the immune system, and help in disease prevention.</p>
+</section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu">
+        <h2>Fruits</h2>
+        <div class="menu-items">
+            <div class="menu-item">
+                <img src="{{ url_for('static', filename='apple.webp') }}" alt="Apple">
+                <h3>Apple</h3>
+                <p>Fresh and crispy apples.</p>
+                <p><strong>Price:</strong> rs-130.00 per kg</p>
+                <button class="add-to-cart" data-item="apple" data-price="3.00">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="{{ url_for('static', filename='pomegranate.jpg') }}" alt="Pomegranate">
+                <h3>Pomegranate</h3>
+                <p>Juicy and delicious pomegranates.</p>
+                <p><strong>Price:</strong> rs-200.00 per piece</p>
+                <button class="add-to-cart" data-item="pomegranate" data-price="4.00">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="{{ url_for('static', filename='banana.jpg') }}" alt="Banana">
+                <h3>Banana</h3>
+                <p>Sweet and healthy bananas.</p>
+                <p><strong>Price:</strong> rs-60.00 per dozen</p>
+                <button class="add-to-cart" data-item="banana" data-price="1.50">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="{{ url_for('static', filename='jackfruit.jpg') }}" alt="Jackfruit">
+                <h3>Jackfruit</h3>
+                <p>Exotic and tasty jackfruit.</p>
+                <p><strong>Price:</strong> $10.00 per /piece</p>
+                <button class="add-to-cart" data-item="jackfruit" data-price="2.50">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="{{ url_for('static', filename='papaya.jpg') }}" alt="Papaya">
+                <h3>Papaya</h3>
+                <p>Rich and nutritious papayas.</p>
+                <p><strong>Price:</strong> rs-35.50 per kg</p>
+                <button class="add-to-cart" data-item="papaya" data-price="3.50">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="{{ url_for('static', filename='watermelon.webp') }}" alt="Watermelon">
+                <h3>Watermelon</h3>
+                <p>Refreshing and sweet watermelons.</p>
+                <p><strong>Price:</strong> rs-40.00 per kg</p>
+                <button class="add-to-cart" data-item="watermelon" data-price="1.00">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="{{ url_for('static', filename='kiwi.jpg') }}" alt="Kiwi">
+                <h3>Kiwi</h3>
+                <p>Delicious and tangy kiwis.</p>
+                <p><strong>Price:</strong> rs-60.00 per fruit</p>
+                <button class="add-to-cart" data-item="kiwi" data-price="6.00">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+    
+    <section id="menu" class="menu">
+        <h2>vegtables</h2>
+        <div class="menu-items">
+            <div class="menu-item">
+                <img src="static/tomato.jpg" alt="vegetables">
+                <h3>Tomato</h3>
+                <p>A juicy beef burger with fresh lettuce, tomato, and our special sauce.</p>
+                <p><strong>Price:</strong> rs-70.00 per kg</p>
+                <button class="add-to-cart" data-item="apple" data-price="3.00">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="static/onion.jpg" alt="vegetables">
+                <h3>onion</h3>
+                <p>A juicy beef burger with fresh lettuce, tomato, and our special sauce.</p>
+                <p><strong>Price:</strong> rs-65.00 per kg</p>
+                <button class="add-to-cart" data-item="apple" data-price="3.00">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="static/chilligreen.jpg" alt="vegetables">
+                <h3> Green chilli</h3>
+                <p>A juicy beef burger with fresh lettuce, tomato, and our special sauce.</p>
+                <p><strong>Price:</strong> rs-50.00 per kg</p>
+                <button class="add-to-cart" data-item="apple" data-price="3.00">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="static/potato.jpg" alt="vegetables">
+                <h3>potato</h3>
+                <p>A juicy beef burger with fresh lettuce, tomato, and our special sauce.</p>
+                <p><strong>Price:</strong> rs-60.00 per kg</p>
+                <button class="add-to-cart" data-item="apple" data-price="3.00">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="static/beetroot.jpg" alt="vegetables">
+                <h3>Beetroot</h3>
+                <p>A juicy beef burger with fresh lettuce, tomato, and our special sauce.</p>
+                <p><strong>Price:</strong> rs-75.00 per kg</p>
+                <button class="add-to-cart" data-item="apple" data-price="3.00">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="static/.jpg" alt="vegetables">
+                <h3>Cabbage</h3>
+                <p>A juicy beef burger with fresh lettuce, tomato, and our special sauce.</p>
+                <p><strong>Price:</strong> rs-130.00 per kg</p>
+                <button class="add-to-cart" data-item="apple" data-price="3.00">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="static/.jpg" alt="vegetables">
+                <h3>califlower</h3>
+                <p>A juicy beef burger with fresh lettuce, tomato, and our special sauce.</p>
+                <p><strong>Price:</strong> rs-130.00 per kg</p>
+                <button class="add-to-cart" data-item="apple" data-price="3.00">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="static/carrot.jpg" alt="vegetables">
+                <h3>carrot</h3>
+                <p>A juicy beef burger with fresh lettuce, tomato, and our special sauce.</p>
+                <p><strong>Price:</strong> rs-130.00 per kg</p>
+                <button class="add-to-cart" data-item="apple" data-price="3.00">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="static/brinjal.jpg" alt="vegetables">
+                <h3>brinjal</h3>
+                <p>A juicy beef burger with fresh lettuce, tomato, and our special sauce.</p>
+                <p><strong>Price:</strong> rs-130.00 per kg</p>
+                <button class="add-to-cart" data-item="apple" data-price="3.00">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+    <section id="menu" class="menu">
+        <h2>MEAT</h2>
+        <div class="menu-items">
+            <div class="menu-item">
+                <img src="static/chicken.jpg" alt="meat">
+                <h3>Chicken</h3>
+                <p>A juicy beef burger with fresh lettuce, tomato, and our special sauce.</p>
+                <p><strong>Price:</strong> rs-130.00 per kg</p>
+                <button class="add-to-cart" data-item="apple" data-price="3.00">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="static/sheep.jpg" alt="meat">
+                <h3>Motton(sheep)</h3>
+                <p>A juicy beef burger with fresh lettuce, tomato, and our special sauce.</p>
+                <p><strong>Price:</strong> rs-130.00 per kg</p>
+                <button class="add-to-cart" data-item="apple" data-price="3.00">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="static/goat.jpg" alt="meat">
+                <h3>Motton(goat)</h3>
+                <p>A juicy beef burger with fresh lettuce, tomato, and our special sauce.</p>
+                <p><strong>Price:</strong> rs-130.00 per kg</p>
+                <button class="add-to-cart" data-item="apple" data-price="3.00">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="static/fish.jpg" alt="meat">
+                <h3>Fish</h3>
+                <p>A juicy beef burger with fresh lettuce, tomato, and our special sauce.</p>
+                <p><strong>Price:</strong> rs-130.00 per kg</p>
+                <button class="add-to-cart" data-item="apple" data-price="3.00">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="static/pork.jpg" alt="meat">
+                <h3>Pork</h3>
+                <p>A juicy beef burger with fresh lettuce, tomato, and our special sauce.</p>
+                <p><strong>Price:</strong> rs-130.00 per kg</p>
+                <button class="add-to-cart" data-item="apple" data-price="3.00">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="static/beef.jpg" alt="meat">
+                <h3>Beef</h3>
+                <p>A juicy beef burger with fresh lettuce, tomato, and our special sauce.</p>
+                <p><strong>Price:</strong> rs-130.00 per kg</p>
+                <button class="add-to-cart" data-item="apple" data-price="3.00">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+<!-- Menu Section -->
+<section id="menu" class="menu">
+    <h2>Orders</h2>
+    <!-- List of menu items here -->
+</section>
+
+<!-- Order Section -->
+<section id="order" class="order">
+    <!-- Order Form Section -->
+    <div class="order-left">
+        <h2>Order Your Fruits and Vegetables</h2>
+        <form id="order-form" action="/submit-order" method="POST">
+            <div class="form-group">
+                <label for="customer-name">Name:</label>
+                <input type="text" id="customer-name" name="customer-name" required>
+            </div>
+            <div class="form-group">
+                <label for="customer-email">Email:</label>
+                <input type="email" id="customer-email" name="customer-email" placeholder="Please enter a valid email" required>
+            </div>            
+            <div class="form-group">
+                <label for="customer-phone">Phone:</label>
+                <input type="tel" id="customer-phone" name="customer-phone" placeholder="Please enter a valid number" required>
+            </div>
+            <div class="form-group">
+                <label for="item-select"><i>Vegetables :</i></label>
+                <select id="item-select" name="item-select-vegetable" required>
+                    <option value="" disabled selected>Select an item</option>
+                    <option value="carrot">Carrot - $1.00 per kg</option>
+                    <option value="tomato">Tomato - $2.00 per kg</option>
+                    <option value="onion">onion - $1.20 per bunch</option>
+                    <option value="Green chilli">Green chilli - $1.20 per bunch</option>
+                    <option value="potato">potato - $1.20 per bunch</option>
+                    <option value="Beetroot">Beetroot - $1.20 per bunch</option>
+                    <option value="califlower">califlower - $1.20 per bunch</option>
+                    <option value="Cabbage">Cabbage - $1.20 per bunch</option>
+
+                    <option value="">None</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="items"><i>Fruits :</i></label>
+                <select id="items" name="item-select-fruit" required>
+                    <option value="" disabled selected>Select an item</option>
+                    <option value="apple">Apple - 23.00 per kg</option>
+                    <option value="banana">Banana - 31.50 per dozen</option>
+                    <option value="orange">Orange - 72.50 per kg</option>
+                    <option value="pine apple">pine apple - 52.50 per kg</option>
+                    <option value="watermelons">watermelons - 72.50 per kg</option>
+                    <option value="Pomegranate">Pomegranate - $2.50 per kg</option>
+                    <option value="kiwi">kiwi - $2.50 per kg</option>
+                    <option value="Jackfruit">Jackfruit - $2.50 per kg</option>
+                    <option value="">None</option><br><br>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="meat-select"><i>Meats :</i></label>
+                <select id="meat-select" name="item-select-meat" required>
+                    <option value="" disabled selected>Select an item</option>
+                    <option value="chicken">Chicken - $5.00 per kg</option>
+                    <option value="beef">Beef - $8.00 per kg</option>
+                    <option value="fish">Fish - $6.00 per kg</option>
+                    <option value="fish">motton_(Goat) - $6.00 per kg</option>
+                    <option value="fish">motton_(sheep) - $6.00 per kg</option>                    
+                    <option value="">None</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <textarea id="location" name="location" rows="2" cols="38" required></textarea>
+            </div>
+            <div class="form-group"> 
+                
+                <label for="comments">you can enter your needs here :</label> 
+                <textarea id="comments" name="comments" rows="4" cols="45"></textarea> 
+            </div>
+            <button type="submit">Place Order</button>
+        </form>
+    </div>
+
+    <!-- Order Confirmation Section -->
+    <div class="order-right">
+        <h2>instructions / Conditions</h2>
+        <div id="confirmation-details">
+            <ul>
+                <li> We can be available upto 5 kms radious</li>
+                <li> Charges may include on the distance</li>
+                <li> You can make order more than one</li>
+                <li> we will reach destination with in 20 minutes</li>
+                <li> Once order conformed deliver charges will be applied</li>
+            </ul>
+            
+        </div>
+        <div id="image-slider">
+            <div class="slider">
+                <img src="static/IMG_1014.JPG" alt="Image 1">
+                
+            </div>
+            <marquee>the founder of fresh market </marquee>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 Tej Fresh Fruits and Vegetables. All rights reserved.</p>
+</footer>
+
+<script>
+    console.log("Slider script is running!");
+
+    
+    document.addEventListener('DOMContentLoaded', () => { 
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.getAttribute('data-item');
+                const price = button.getAttribute('data-price');
+
+                // Send the item data to the Flask backend
+                fetch('/add-to-cart', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ item, price })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert(`${item} added to the cart successfully!`);
+                    } else {
+                        alert(`Failed to add ${item} to the cart.`);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+            });
+        });
+    });
+
+
+
+    document.getElementById('submit-order').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from submitting
+
+        // Retrieve form values
+        const name = document.getElementById('customer-name').value;
+        const email = document.getElementById('customer-email').value;
+        const phone = document.getElementById('customer-phone').value;
+        const vegetable = document.getElementById('item-select').value;
+        const fruit = document.getElementById('items').value;
+        const meat = document.getElementById('item-select-meat').value;
+        const location = document.getElementById('location').value;
+        const comments = document.getElementById('comments').value;
+
+        // Construct the confirmation message
+        const confirmationMessage = `
+            <p>Thank you for your order, ${name}!</p>
+            <p>Your order details:</p>
+            <p>Email: ${email}</p>
+            <p>Phone: ${phone}</p>
+            <p>Vegetable: ${vegetable}</p>
+            <p>Fruit: ${fruit}</p>
+            <p>Meat: ${meat}</p>
+            <p>Location: ${location}</p>
+            <p>comments: ${comments}</p>
+        `;
+        
+
+        // Display the confirmation message in the confirmation section
+        document.getElementById('confirmation-details').innerHTML = confirmationMessage;
+        // Prepare data to send to the server 
+        const orderData = { 
+            name, 
+            email, 
+            phone, 
+            vegetable, 
+            fruit, 
+            meat, 
+            location,
+            comments
+        };
+        fetch('/submit-order', {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(orderData)
+        })
+        .then(response => response.json()) 
+        .then(data => console.log(data)) 
+        .catch(error => console.error('Error:', error));
+
+    });
+    document.getElementById('order-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const name = document.getElementById('customer-name').value;
+        const email = document.getElementById('customer-email').value;
+        const phone = document.getElementById('customer-phone').value;
+        const vegetable = document.getElementById('item-select').value;
+        const fruit = document.getElementById('items').value;
+        const meat = document.getElementById('meat-select').value;
+        const location = document.getElementById('location').value;
+        const comments = document.getElementById('comments').value;
+        const confirmationMessage = `
+            <p>Thank you for your order, ${name}!</p>
+            <p>Your order details:</p>
+            <p>Email: ${email}</p>
+            <p>Phone: ${phone}</p>
+            <p>Vegetable: ${vegetable ? vegetable : 'None'}</p>
+            <p>Fruit: ${fruit ? fruit : 'None'}</p>
+            <p>Meat: ${meat ? meat : 'None'}</p>
+            <p>Quantity: ${location} kg</p>
+            <p>comments: ${comments} 'None'</p>
+        `;
+        
+        document.getElementById('confirmation-details').innerHTML = confirmationMessage;
+    });
+
+    // JavaScript for sliding images
+    const slider = document.querySelector('.slider');
+    let index = 0;
+    const totalImages = slide.children.length;
+
+    function slideImages() {
+        index++;
+        if (index >= totalImages) {
+            index = 0;
+        }
+        const offset = -index * 300;
+        slider.style.transform = `translateX(${offset}px)`;
+    }
+
+    // Set the interval for sliding
+    setInterval(slideImages, 3000); // Slides every 3 seconds
+
+
+</script>
+
+</body>
+</html>

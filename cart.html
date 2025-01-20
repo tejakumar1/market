@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    {% if cart_items %}
+        <ul>
+            {% for item in cart_items %}
+                <li>{{ item }} -- x {{ item.price }}</li>
+            {% endfor %}
+        </ul>
+        <form action="/submit-order" method="POST">
+            <h2>Customer Details</h2>
+            <label for="customer-name">Name:</label>
+            <input type="text" id="customer-name" name="customer-name" required><br>
+            <label for="customer-email">Email:</label>
+            <input type="email" id="customer-email" name="customer-email" required><br>
+            <label for="customer-phone">Phone:</label>
+            <input type="tel" id="customer-phone" name="customer-phone" required><br>
+            <button type="submit">Place Order</button>
+        </form>
+    {% else %}
+        <p>Your cart is empty.</p>
+    {% endif %}
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const removeButtons = document.querySelectorAll('.remove-item');
+
+            removeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const item = button.getAttribute('data-item');
+
+                    fetch('/remove-from-cart', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ item })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            location.reload(); // Refresh the cart page
+                        }
+                    });
+                });
+            });
+        });
+
+    </script>
+</body>
+</html>
